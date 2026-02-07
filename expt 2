@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information Management System</title>
+
+  <style>
+    /* ===== General Page Styling ===== */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f7ff;
+    }
+
+    /* ===== Header ===== */
+    header {
+      background: #1e3cfa;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* ===== Main Container ===== */
+    .container {
+      width: 85%;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ===== Section Titles ===== */
+    h2 {
+      text-align: center;
+      color: #1e3cfa;
+      margin-bottom: 20px;
+    }
+
+    /* ===== Form Styling ===== */
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    form input {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      font-size: 15px;
+    }
+
+    form input:focus {
+      border-color: #1e3cfa;
+      box-shadow: 0 0 6px rgba(30, 60, 250, 0.4);
+    }
+
+    /* ===== Button Styling ===== */
+    .btn {
+      grid-column: span 2;
+      padding: 12px;
+      background: #1e3cfa;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1428b8;
+    }
+
+    /* ===== Table Styling ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    table th {
+      background: #1e3cfa;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+    }
+
+    table td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table tr:hover {
+      background: #f1f4ff;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+      background: #1e3cfa;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    📚 Student Information Management System
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+
+    <!-- Form Section -->
+    <h2>Enter Student Details</h2>
+
+    <form>
+      <input type="text" placeholder="Student Name" required>
+      <input type="number" placeholder="Roll Number" required>
+
+      <input type="text" placeholder="Class" required>
+      <input type="text" placeholder="Department" required>
+
+      <input type="email" placeholder="Email Address" required>
+      <input type="text" placeholder="Phone Number" required>
+
+      <button class="btn" type="submit">Add Student</button>
+    </form>
+
+    <!-- Table Section -->
+    <h2>Student Records</h2>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Class</th>
+        <th>Department</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+
+      <tr>
+        <td>Aaron Vijay</td>
+        <td>101</td>
+        <td>10-A</td>
+        <td>Science</td>
+        <td>aaron@gmail.com</td>
+        <td>9876543210</td>
+      </tr>
+
+      <tr>
+        <td>Mary Smith</td>
+        <td>102</td>
+        <td>10-B</td>
+        <td>Commerce</td>
+        <td>mary@gmail.com</td>
+        <td>9123456780</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Student Management System | Designed with HTML & CSS
+  </footer>
+
+</body>
+</html>
