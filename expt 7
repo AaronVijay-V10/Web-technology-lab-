@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- First Number -->
+    <EditText
+        android:id="@+id/editTextNumber1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter first number"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Second Number -->
+    <EditText
+        android:id="@+id/editTextNumber2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter second number"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/editTextNumber1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Buttons Row -->
+    <LinearLayout
+        android:id="@+id/buttonRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintTop_toBottomOf="@id/editTextNumber2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/buttonSubtract"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Subtract"/>
+
+        <Button
+            android:id="@+id/buttonMultiply"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Multiply"/>
+
+        <Button
+            android:id="@+id/buttonDivide"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Divide"/>
+
+    </LinearLayout>
+
+    <!-- Clear Button -->
+    <Button
+        android:id="@+id/buttonClear"
+        android:layout_width="wrap_content"
+
+
+
+
+
+
+
+package com.example.studentcalculatorapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.*;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText editTextNumber1, editTextNumber2;
+    TextView textViewResult;
+    Button buttonAdd, buttonSubtract, buttonMultiply, buttonDivide, buttonClear;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editTextNumber1 = findViewById(R.id.editTextNumber1);
+        editTextNumber2 = findViewById(R.id.editTextNumber2);
+        textViewResult = findViewById(R.id.textViewResult);
+
+        buttonAdd = findViewById(R.id.buttonAdd);
+        buttonSubtract = findViewById(R.id.buttonSubtract);
+        buttonMultiply = findViewById(R.id.buttonMultiply);
+        buttonDivide = findViewById(R.id.buttonDivide);
+        buttonClear = findViewById(R.id.buttonClear);
+
+        buttonAdd.setOnClickListener(v -> calculate('+'));
+        buttonSubtract.setOnClickListener(v -> calculate('-'));
+        buttonMultiply.setOnClickListener(v -> calculate('*'));
+        buttonDivide.setOnClickListener(v -> calculate('/'));
+
+        buttonClear.setOnClickListener(v -> {
+            editTextNumber1.setText("");
+            editTextNumber2.setText("");
+            textViewResult.setText("Result will appear here");
+        });
+    }
+
+    private void calculate(char op) {
+        String input1 = editTextNumber1.getText().toString();
+        String input2 = editTextNumber2.getText().toString();
+
+        if (input1.isEmpty() || input2.isEmpty()) {
+            textViewResult.setText("Enter both numbers");
+            return;
+        }
+
+        double num1 = Double.parseDouble(input1);
+        double num2 = Double.parseDouble(input2);
+        double result = 0;
+
+        switch (op) {
+            case '+': result = num1 + num2; break;
+            case '-': result = num1 - num2; break;
+            case '*': result = num1 * num2; break;
+            case '/':
+                if (num2 == 0) {
+                    textViewResult.setText("Cannot divide by zero");
+                    return;
+                }
+                result = num1 / num2;
+                break;
+        }
+
+        textViewResult.setText("Result: " + result);
+    }
+}
